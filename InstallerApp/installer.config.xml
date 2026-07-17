@@ -1,0 +1,36 @@
+<Installer>
+  <ProductName>NotSkype K</ProductName>
+  <Publisher>Bastion</Publisher>
+  <Version>1.44.3.2</Version>
+  <MainExecutable>KSkype.exe</MainExecutable>
+  <DefaultInstallFolder>%LocalAppData%\Bastion\NotSkype\NSK</DefaultInstallFolder>
+  <LicenseUrl>https://www.skype.com/en/legal/tou/</LicenseUrl>
+  <PrivacyUrl>https://privacy.microsoft.com/privacystatement</PrivacyUrl>
+  <TermsDisplayName>Microsoft's Terms of Use</TermsDisplayName>
+  <PrivacyDisplayName>Privacy Statement</PrivacyDisplayName>
+  <ShowOfferPage>false</ShowOfferPage>
+  <OfferTitle>One more thing</OfferTitle>
+  <OfferText>Optional bundled settings can be presented here.</OfferText>
+  <CreateDesktopShortcut>true</CreateDesktopShortcut>
+  <CreateStartMenuShortcut>true</CreateStartMenuShortcut>
+  <LaunchAfterInstall>true</LaunchAfterInstall>
+
+  <!-- Setup UI skin. Supported values: 7.41, 7.0. -->
+  <SetupUiVersion>7.0</SetupUiVersion>
+
+  <!-- Optional 7.0-era intermediate page when ShowOfferPage=true.
+       Supported values: Plugin, Bing, Yandex, Wlm. -->
+  <Skype70OfferPage>Plugin</Skype70OfferPage>
+
+  <!-- When true, clicking I agree - next only shows the installing screen.
+       No payload is read or installed, and the marquee runs indefinitely. -->
+  <StayOnInstallingForever>false</StayOnInstallingForever>
+
+  <!-- Detect an existing installation from this installer's HKCU uninstall entry,
+       falling back to DefaultInstallFolder\MainExecutable. -->
+  <DetectExistingInstallation>true</DetectExistingInstallation>
+
+  <!-- Native WinForms marquee timer interval. 30 ms matches the supplied
+       original Skype recording (approximately one pass every 2.1 seconds). -->
+  <MarqueeAnimationSpeed>30</MarqueeAnimationSpeed>
+</Installer>

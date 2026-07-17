@@ -1,0 +1,2 @@
+using System.Reflection;using System.Runtime.InteropServices;
+[assembly:AssemblyTitle("Configurable Classic Setup")][assembly:AssemblyDescription("Configurable WinForms installer shell")][assembly:AssemblyCompany("My Company")][assembly:AssemblyProduct("Setup")][assembly:ComVisible(false)][assembly:Guid("b6c9167f-8f8e-49c7-a6d3-40e3876ad944")][assembly:AssemblyVersion("1.0.0.0")][assembly:AssemblyFileVersion("1.0.0.0")]
