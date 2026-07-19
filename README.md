@@ -19,3 +19,8 @@ For the full build notes, installer behavior, payload setup, and UI skin details
 * Some recreated UI pages/dialogs may exist mainly for accuracy and may not have any backend behavior yet.
   * An example of this is the 7.0 style's Offer Page.
 * The detailed README has the more specific setup and limitation notes.
+
+## AI usage disclosure
+This recreation, as well as its [in-depth README](README-SkypeStyleInstaller.md) has been generated with the help of ChatGPT (Web, Codex didn't perform well for the task).  
+As of current, there still are some flaws ChatGPT could not iron out.
+  * Will be manually fixed in the future.
