@@ -100,7 +100,7 @@ namespace SkypeStyleInstaller
                 AutoSize = false,
                 BackColor = chromeColor,
                 ForeColor = Color.FromArgb(20, 20, 20),
-                Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point),
+                Font = new Font("Segoe UI Semibold", 10F, FontStyle.Regular, GraphicsUnit.Point),
                 UseMnemonic = false,
                 UseCompatibleTextRendering = false
             };
