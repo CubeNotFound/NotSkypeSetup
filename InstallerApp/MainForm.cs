@@ -851,17 +851,39 @@ namespace SkypeStyleInstaller
 
         private void BuildSkype70TeamsPage(string target, bool desktop)
         {
+            // Keep this page on the same 7.0 cloud-header shell as the other
+            // wizard pages. Only its copy, migration artwork and support footer differ.
             Controls.Clear();
             root = CreateSkype70Root();
             var page = AddSkype70PageHost();
-            var left = new Panel { Location = new Point(0, 0), Size = new Size(312, 235), BackColor = Color.White };
+
+            var left = new Panel
+            {
+                Location = new Point(0, 0),
+                Size = new Size(312, 235),
+                BackColor = Color.White
+            };
             page.Controls.Add(left);
-            left.Controls.Add(CreateSkype70Label("Your Teams Contacts and IM are now on Skype", new Point(0, 0), new Size(310, 40), Skype70HeadingSize, FontStyle.Bold, Skype70Accent));
-            left.Controls.Add(CreateSkype70Label("Microsoft is upgrading your experience to Skype.", new Point(0, 48), new Size(310, 25), 9F, FontStyle.Regular));
-            left.Controls.Add(CreateSkype70Label("Continue to IM and video call with your buddies, plus with Skype you get group video calling and more.", new Point(0, 80), new Size(310, 48), 9F, FontStyle.Regular));
-            left.Controls.Add(CreateSkype70Label("Please note, as Skype includes IM and your contacts, Teams will be uninstalled.", new Point(0, 128), new Size(310, 48), 9F, FontStyle.Regular));
+
+            left.Controls.Add(CreateSkype70Label(
+                "Your Teams Contacts and IM are now on Skype",
+                new Point(0, 0), new Size(310, 42),
+                Skype70HeadingSize, FontStyle.Bold, Skype70Accent));
+            left.Controls.Add(CreateSkype70Label(
+                "Microsoft is upgrading your experience to Skype.",
+                new Point(0, 48), new Size(310, 24),
+                Skype70BodySize, FontStyle.Regular));
+            left.Controls.Add(CreateSkype70Label(
+                "Continue to IM and video call with your contacts, plus with Skype you get group video calling and more.",
+                new Point(0, 80), new Size(310, 50),
+                Skype70BodySize, FontStyle.Regular));
+            left.Controls.Add(CreateSkype70Label(
+                "Please note, as Skype includes IM and your contacts, Teams will be uninstalled.",
+                new Point(0, 136), new Size(310, 48),
+                Skype70BodySize, FontStyle.Regular));
+
             AddSkype70Art(page, "Assets/Skype70Teams.png", new Point(346, 0), new Size(326, 235));
-            AddSkype70Footer(string.Empty, "Continue", delegate { StartInstall(target, desktop); }, 75);
+            AddSkype70SupportFooter("Continue", delegate { StartInstall(target, desktop); }, 75);
         }
 
         private Panel CreateSkype70Root()
