@@ -16,7 +16,8 @@ namespace SkypeStyleInstaller.Models
         Plugin,
         Bing,
         Yandex,
-        Wlm
+        Wlm,
+        Teams
     }
 
     public sealed class InstallerConfig
@@ -76,6 +77,7 @@ namespace SkypeStyleInstaller.Models
             if (normalized == "bing") return Skype70OfferPage.Bing;
             if (normalized == "yandex") return Skype70OfferPage.Yandex;
             if (normalized == "wlm" || normalized == "messenger") return Skype70OfferPage.Wlm;
+            if (normalized == "teams") return Skype70OfferPage.Teams;
             return Skype70OfferPage.Plugin;
         }
 

@@ -20,6 +20,8 @@ namespace SkypeStyleInstaller
         private static readonly Color Skype70Accent = Color.FromArgb(0, 175, 240);
         private static readonly Color Skype70Footer = Color.FromArgb(235, 235, 235);
         private static readonly Color Skype70Separator = Color.FromArgb(218, 218, 218);
+        private const float Skype70HeadingSize = 11F;
+        private const float Skype70BodySize = 9F;
         private bool optionsVisible;
 
         private Panel root;
@@ -301,6 +303,7 @@ namespace SkypeStyleInstaller
                     case Skype70OfferPage.Bing: BuildSkype70BingOffer(target, desktop); break;
                     case Skype70OfferPage.Yandex: BuildSkype70YandexOffer(target, desktop); break;
                     case Skype70OfferPage.Wlm: BuildSkype70WlmPage(target, desktop); break;
+                    case Skype70OfferPage.Teams: BuildSkype70TeamsPage(target, desktop); break;
                     default: BuildSkype70PluginOffer(target, desktop); break;
                 }
                 return;
@@ -470,7 +473,7 @@ namespace SkypeStyleInstaller
 
             leftPanel.Controls.Add(CreateSkype70Label(
                 "Not far to go now...",
-                new Point(0, 0), new Size(315, 24), 11F, FontStyle.Bold, Skype70Accent));
+                new Point(0, 0), new Size(315, 24), Skype70HeadingSize, FontStyle.Bold, Skype70Accent));
             leftPanel.Controls.Add(CreateSkype70Label(
                 "You're just a few steps away from using " + config.ProductName + ".",
                 new Point(0, 40), new Size(315, 24), 9F, FontStyle.Regular));
@@ -506,7 +509,7 @@ namespace SkypeStyleInstaller
                 FlatStyle = FlatStyle.Standard,
                 IntegralHeight = false,
                 DropDownHeight = 225,
-                Font = new Font("Tahoma", 9F)
+                Font = new Font("Segoe UI", 9F)
             };
             language.Items.AddRange(new object[] {
                 "English", "العربية", "Български", "Čeština", "Dansk", "Deutsch",
@@ -537,7 +540,7 @@ namespace SkypeStyleInstaller
                 Location = new Point(0, 57),
                 Size = new Size(300, 22),
                 Checked = true,
-                Font = new Font("Tahoma", 9F),
+                Font = new Font("Segoe UI", 9F),
                 UseVisualStyleBackColor = true
             };
             rightPanel.Controls.Add(startWithComputer);
@@ -552,7 +555,7 @@ namespace SkypeStyleInstaller
                 Location = new Point(0, 140),
                 Size = new Size(225, 22),
                 Text = updateMode ? detectedInstallFolder : config.ExpandedInstallFolder,
-                Font = new Font("Tahoma", 9F)
+                Font = new Font("Segoe UI", 9F)
             };
             rightPanel.Controls.Add(folder);
 
@@ -562,7 +565,7 @@ namespace SkypeStyleInstaller
                 Location = new Point(234, 139),
                 Size = new Size(77, 24),
                 FlatStyle = FlatStyle.System,
-                Font = new Font("Tahoma", 9F)
+                Font = new Font("Segoe UI", 9F)
             };
             browseButton.Click += BrowseClick;
             rightPanel.Controls.Add(browseButton);
@@ -573,7 +576,7 @@ namespace SkypeStyleInstaller
                 Location = new Point(0, 178),
                 Size = new Size(250, 21),
                 Checked = config.CreateDesktopShortcut,
-                Font = new Font("Tahoma", 9F),
+                Font = new Font("Segoe UI", 9F),
                 UseVisualStyleBackColor = true
             };
             rightPanel.Controls.Add(desktopShortcut);
@@ -607,7 +610,7 @@ namespace SkypeStyleInstaller
 
             root.Controls.Add(CreateSkype70Label(
                 updateMode ? "Updating " + config.ProductName : "Installing " + config.ProductName,
-                new Point(24, 163), new Size(650, 24), 11F, FontStyle.Bold, Skype70Accent));
+                new Point(24, 163), new Size(650, 24), Skype70HeadingSize, FontStyle.Bold, Skype70Accent));
             root.Controls.Add(CreateSkype70Label(
                 updateMode
                     ? "This won't take long..."
@@ -634,7 +637,7 @@ namespace SkypeStyleInstaller
             var page = AddSkype70PageHost();
 
             page.Controls.Add(CreateSkype70Label("Installation complete",
-                new Point(0, 0), new Size(650, 20), 11F, FontStyle.Bold));
+                new Point(0, 0), new Size(650, 20), Skype70HeadingSize, FontStyle.Bold, Skype70Accent));
             page.Controls.Add(CreateSkype70Label(config.ProductName + " has been successfully installed on your computer.",
                 new Point(0, 20), new Size(650, 35), 9F, FontStyle.Regular));
             page.Controls.Add(CreateSkype70Label("Click Finish to exit Skype Setup.",
@@ -659,7 +662,7 @@ namespace SkypeStyleInstaller
             var page = AddSkype70PageHost();
 
             page.Controls.Add(CreateSkype70Label("We're having some problems",
-                new Point(0, 0), new Size(650, 20), 11F, FontStyle.Bold));
+                new Point(0, 0), new Size(650, 20), Skype70HeadingSize, FontStyle.Bold, Skype70Accent));
             page.Controls.Add(CreateSkype70Label("An error occurred while installing " + config.ProductName + ".",
                 new Point(0, 30), new Size(650, 25), 9F, FontStyle.Regular));
             page.Controls.Add(CreateSkype70Label(ex.Message,
@@ -676,7 +679,7 @@ namespace SkypeStyleInstaller
 
             var left = new Panel { Location = new Point(0, 0), Size = new Size(320, 245), BackColor = Color.White };
             page.Controls.Add(left);
-            left.Controls.Add(CreateSkype70Label("Skype Click to Call", new Point(0, 0), new Size(310, 24), 11F, FontStyle.Bold, Skype70Accent));
+            left.Controls.Add(CreateSkype70Label("Skype Click to Call", new Point(0, 0), new Size(310, 24), Skype70HeadingSize, FontStyle.Bold, Skype70Accent));
             left.Controls.Add(CreateSkype70Label("Make the most of " + config.ProductName + " when browsing the web.", new Point(0, 38), new Size(310, 24), 9F, FontStyle.Regular));
             left.Controls.Add(CreateSkype70FormattedParagraph(
                 "Save time. ",
@@ -694,7 +697,7 @@ namespace SkypeStyleInstaller
                 Location = new Point(0, 220),
                 Size = new Size(300, 25),
                 Checked = true,
-                Font = new Font("Tahoma", 9F),
+                Font = new Font("Segoe UI", 9F),
                 UseVisualStyleBackColor = true
             });
             AddSkype70Art(page, "Assets/Skype70ClickToCall.png", new Point(360, 6), new Size(312, 272));
@@ -720,14 +723,14 @@ namespace SkypeStyleInstaller
                 ScrollBars = RichTextBoxScrollBars.None,
                 WordWrap = true,
                 ShortcutsEnabled = false,
-                Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point)
+                Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point)
             };
 
             box.Text = boldLead + body;
             box.Select(0, boldLead.Length);
-            box.SelectionFont = new Font("Tahoma", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            box.SelectionFont = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             box.Select(boldLead.Length, body.Length);
-            box.SelectionFont = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            box.SelectionFont = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             box.Select(0, 0);
             return box;
         }
@@ -737,14 +740,62 @@ namespace SkypeStyleInstaller
             Controls.Clear();
             root = CreateSkype70Root();
             var page = AddSkype70PageHost();
-            var left = new Panel { Location = new Point(0, 0), Size = new Size(312, 235), BackColor = Color.White };
+
+            // The Bing/MSN offer uses the same typography and spacing system as
+            // the other Skype 7.0 pages. Earlier versions accidentally used a
+            // black heading and placed the options too close to the body copy.
+            var left = new Panel
+            {
+                Location = new Point(0, 0),
+                Size = new Size(320, 272),
+                BackColor = Color.White
+            };
             page.Controls.Add(left);
-            left.Controls.Add(CreateSkype70Label("Make Bing your search engine and MSN your homepage.", new Point(0, 0), new Size(310, 42), 11F, FontStyle.Bold));
-            left.Controls.Add(CreateSkype70Label("Get great search results from Bing and stay in the know with MSN about the things that matter most to you.", new Point(0, 44), new Size(310, 58), 9F, FontStyle.Regular));
-            left.Controls.Add(new CheckBox { Text = "Make Bing my search engine", Location = new Point(0, 118), Size = new Size(280, 20), Checked = true, Font = new Font("Tahoma", 9F), UseVisualStyleBackColor = true });
-            left.Controls.Add(new CheckBox { Text = "Make MSN my homepage", Location = new Point(0, 150), Size = new Size(280, 20), Checked = true, Font = new Font("Tahoma", 9F), UseVisualStyleBackColor = true });
-            AddSkype70Art(page, "Assets/Skype70Bing.png", new Point(346, 0), new Size(326, 235));
-            AddSkype70Footer("By clicking 'Continue' you agree to Microsoft Service Agreement and Privacy Policy.", "Continue", delegate { StartInstall(target, desktop); }, 75);
+
+            left.Controls.Add(CreateSkype70Label(
+                "Make Bing™ your search engine and MSN® your homepage.",
+                new Point(0, 0), new Size(315, 43),
+                Skype70HeadingSize, FontStyle.Bold, Skype70Accent));
+
+            left.Controls.Add(CreateSkype70Label(
+                "Get great search results from Bing and stay in the know with MSN about the things that matter most to you.",
+                new Point(0, 53), new Size(315, 62),
+                Skype70BodySize, FontStyle.Regular));
+
+            left.Controls.Add(new CheckBox
+            {
+                Text = "Make Bing my search engine",
+                Location = new Point(0, 179),
+                Size = new Size(290, 22),
+                Checked = true,
+                Font = new Font("Segoe UI", Skype70BodySize, FontStyle.Regular, GraphicsUnit.Point),
+                UseVisualStyleBackColor = true
+            });
+
+            left.Controls.Add(new CheckBox
+            {
+                Text = "Make MSN my homepage",
+                Location = new Point(0, 205),
+                Size = new Size(290, 22),
+                Checked = true,
+                Font = new Font("Segoe UI", Skype70BodySize, FontStyle.Regular, GraphicsUnit.Point),
+                UseVisualStyleBackColor = true
+            });
+
+            left.Controls.Add(CreateSkype70Label(
+                "*Applies to Internet Explorer, Firefox, Chrome and Safari.",
+                new Point(0, 234), new Size(315, 22),
+                8F, FontStyle.Regular));
+
+            // The source artwork already includes the correct white lower area;
+            // display it at native width rather than stretching or cropping it.
+            AddSkype70Art(page, "Assets/Skype70Bing.png", new Point(346, 0), new Size(326, 255));
+
+            AddSkype70Footer(
+                "By clicking 'Continue' you agree to Microsoft Service Agreement and Privacy Policy.",
+                "Continue",
+                delegate { StartInstall(target, desktop); },
+                75);
         }
 
         private void BuildSkype70YandexOffer(string target, bool desktop)
@@ -756,28 +807,66 @@ namespace SkypeStyleInstaller
             page.Controls.Add(left);
             left.Controls.Add(CreateSkype70Label("Yandex Toolbar", new Point(0, 0), new Size(310, 20), 11F, FontStyle.Bold));
             left.Controls.Add(CreateSkype70Label("Do you want to install Yandex in your browser?", new Point(0, 24), new Size(310, 38), 9F, FontStyle.Regular));
-            left.Controls.Add(new CheckBox { Text = "Make Yandex your homepage", Location = new Point(0, 150), Size = new Size(300, 20), Checked = false, Font = new Font("Tahoma", 9F), UseVisualStyleBackColor = true });
-            left.Controls.Add(new CheckBox { Text = "Install Yandex search", Location = new Point(0, 185), Size = new Size(300, 20), Checked = false, Font = new Font("Tahoma", 9F), UseVisualStyleBackColor = true });
+            left.Controls.Add(new CheckBox { Text = "Make Yandex your homepage", Location = new Point(0, 150), Size = new Size(300, 20), Checked = false, Font = new Font("Segoe UI", 9F), UseVisualStyleBackColor = true });
+            left.Controls.Add(new CheckBox { Text = "Install Yandex search", Location = new Point(0, 185), Size = new Size(300, 20), Checked = false, Font = new Font("Segoe UI", 9F), UseVisualStyleBackColor = true });
             AddSkype70Footer("By installing and using this software, you agree to the conditions of the License Agreement.", "Continue", delegate { StartInstall(target, desktop); }, 75);
         }
 
         private void BuildSkype70WlmPage(string target, bool desktop)
+        {
+            // Keep this page on the same 7.0 cloud-header shell as the other
+            // wizard pages. Only its copy, migration artwork and support footer differ.
+            Controls.Clear();
+            root = CreateSkype70Root();
+            var page = AddSkype70PageHost();
+
+            var left = new Panel
+            {
+                Location = new Point(0, 0),
+                Size = new Size(312, 235),
+                BackColor = Color.White
+            };
+            page.Controls.Add(left);
+
+            left.Controls.Add(CreateSkype70Label(
+                "Your Messenger Buddies and IM are now on Skype",
+                new Point(0, 0), new Size(310, 42),
+                Skype70HeadingSize, FontStyle.Bold, Skype70Accent));
+            left.Controls.Add(CreateSkype70Label(
+                "Microsoft is upgrading your experience to Skype.",
+                new Point(0, 48), new Size(310, 24),
+                Skype70BodySize, FontStyle.Regular));
+            left.Controls.Add(CreateSkype70Label(
+                "Continue to IM and video call with your buddies, plus with Skype you get group video calling and more.",
+                new Point(0, 80), new Size(310, 50),
+                Skype70BodySize, FontStyle.Regular));
+            left.Controls.Add(CreateSkype70Label(
+                "Please note, as Skype includes IM and your buddies, Messenger will be uninstalled.",
+                new Point(0, 136), new Size(310, 48),
+                Skype70BodySize, FontStyle.Regular));
+
+            AddSkype70Art(page, "Assets/Skype70Wlm.png", new Point(346, 0), new Size(326, 235));
+            AddSkype70SupportFooter("Continue", delegate { StartInstall(target, desktop); }, 75);
+        }
+
+        private void BuildSkype70TeamsPage(string target, bool desktop)
         {
             Controls.Clear();
             root = CreateSkype70Root();
             var page = AddSkype70PageHost();
             var left = new Panel { Location = new Point(0, 0), Size = new Size(312, 235), BackColor = Color.White };
             page.Controls.Add(left);
-            left.Controls.Add(CreateSkype70Label("Your Messenger Buddies and IM are now on Skype", new Point(0, 0), new Size(310, 40), 11F, FontStyle.Bold));
+            left.Controls.Add(CreateSkype70Label("Your Teams Contacts and IM are now on Skype", new Point(0, 0), new Size(310, 40), Skype70HeadingSize, FontStyle.Bold, Skype70Accent));
             left.Controls.Add(CreateSkype70Label("Microsoft is upgrading your experience to Skype.", new Point(0, 48), new Size(310, 25), 9F, FontStyle.Regular));
-            left.Controls.Add(CreateSkype70Label("Continue to IM and video call with your buddies, plus with Skype you get group video calling and more.", new Point(0, 80), new Size(310, 58), 9F, FontStyle.Regular));
-            left.Controls.Add(CreateSkype70Label("Please note, as Skype includes IM and your buddies, Messenger will be uninstalled.", new Point(0, 148), new Size(310, 48), 9F, FontStyle.Regular));
-            AddSkype70Art(page, "Assets/Skype70Wlm.png", new Point(346, 0), new Size(326, 235));
+            left.Controls.Add(CreateSkype70Label("Continue to IM and video call with your buddies, plus with Skype you get group video calling and more.", new Point(0, 80), new Size(310, 48), 9F, FontStyle.Regular));
+            left.Controls.Add(CreateSkype70Label("Please note, as Skype includes IM and your contacts, Teams will be uninstalled.", new Point(0, 128), new Size(310, 48), 9F, FontStyle.Regular));
+            AddSkype70Art(page, "Assets/Skype70Teams.png", new Point(346, 0), new Size(326, 235));
             AddSkype70Footer(string.Empty, "Continue", delegate { StartInstall(target, desktop); }, 75);
         }
 
         private Panel CreateSkype70Root()
         {
+            ClientSize = new Size(720, 490);
             var panel = new Panel { Dock = DockStyle.Fill, BackColor = Color.White };
             Controls.Add(panel);
 
@@ -813,6 +902,63 @@ namespace SkypeStyleInstaller
             return page;
         }
 
+        private void AddSkype70SupportFooter(string buttonText, EventHandler click, int buttonWidth)
+        {
+            var separator = new Panel
+            {
+                Location = new Point(0, 427),
+                Size = new Size(720, 1),
+                BackColor = Skype70Separator
+            };
+            root.Controls.Add(separator);
+
+            var footer = new Panel
+            {
+                Location = new Point(0, 428),
+                Size = new Size(720, 62),
+                BackColor = Skype70Footer
+            };
+            root.Controls.Add(footer);
+
+            const string supportText = "If you have any feedback, questions or concerns, please contact customer support and we'll be glad to help.";
+            var support = new LinkLabel
+            {
+                Text = supportText,
+                // Match the typography and alignment used by the main 7.0 wizard footer.
+                Location = new Point(24, 13),
+                Size = new Size(535, 40),
+                AutoSize = false,
+                Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point),
+                BackColor = Color.Transparent,
+                ForeColor = Color.FromArgb(32, 32, 32),
+                LinkColor = Color.FromArgb(0, 102, 204),
+                ActiveLinkColor = Color.FromArgb(0, 102, 204),
+                VisitedLinkColor = Color.FromArgb(0, 102, 204),
+                UseCompatibleTextRendering = false
+            };
+            int supportStart = supportText.IndexOf("customer support", StringComparison.Ordinal);
+            support.Links.Add(supportStart, "customer support".Length, "https://support.skype.com/");
+            support.LinkClicked += delegate(object sender, LinkLabelLinkClickedEventArgs e)
+            {
+                string url = e.Link.LinkData as string;
+                if (!string.IsNullOrEmpty(url)) OpenUrl(url);
+            };
+            footer.Controls.Add(support);
+
+            actionButton = new Button
+            {
+                Text = buttonText,
+                Location = new Point(696 - buttonWidth, 18),
+                Size = new Size(buttonWidth, 25),
+                FlatStyle = FlatStyle.System,
+                Font = new Font("Segoe UI", 9F),
+                UseVisualStyleBackColor = true
+            };
+            actionButton.Click += click;
+            footer.Controls.Add(actionButton);
+            AcceptButton = actionButton;
+        }
+
         private void AddSkype70Footer(string legalText, string buttonText, EventHandler click, int buttonWidth)
         {
             var separator = new Panel
@@ -839,7 +985,7 @@ namespace SkypeStyleInstaller
                     Location = new Point(24, 13),
                     Size = new Size(535, 40),
                     AutoSize = false,
-                    Font = new Font("Tahoma", 8.25F, FontStyle.Regular, GraphicsUnit.Point),
+                    Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point),
                     BackColor = Color.Transparent,
                     ForeColor = Color.FromArgb(32, 32, 32),
                     LinkColor = Color.FromArgb(0, 102, 204),
@@ -849,8 +995,21 @@ namespace SkypeStyleInstaller
                 };
                 int termsStart = legalText.IndexOf(config.TermsDisplayName, StringComparison.Ordinal);
                 int privacyStart = legalText.IndexOf(config.PrivacyDisplayName, StringComparison.Ordinal);
-                if (termsStart >= 0) legal.Links.Add(termsStart, config.TermsDisplayName.Length, config.LicenseUrl);
-                if (privacyStart >= 0) legal.Links.Add(privacyStart, config.PrivacyDisplayName.Length, config.PrivacyUrl);
+                if (termsStart >= 0)
+                    legal.Links.Add(termsStart, config.TermsDisplayName.Length, config.LicenseUrl);
+                if (privacyStart >= 0)
+                    legal.Links.Add(privacyStart, config.PrivacyDisplayName.Length, config.PrivacyUrl);
+
+                // Offer pages use Microsoft-specific wording rather than the
+                // product terms labels from installer.config.xml.
+                const string microsoftAgreement = "Microsoft Service Agreement";
+                const string microsoftPrivacy = "Privacy Policy";
+                int microsoftAgreementStart = legalText.IndexOf(microsoftAgreement, StringComparison.Ordinal);
+                int microsoftPrivacyStart = legalText.IndexOf(microsoftPrivacy, StringComparison.Ordinal);
+                if (microsoftAgreementStart >= 0 && termsStart < 0)
+                    legal.Links.Add(microsoftAgreementStart, microsoftAgreement.Length, config.LicenseUrl);
+                if (microsoftPrivacyStart >= 0 && privacyStart < 0)
+                    legal.Links.Add(microsoftPrivacyStart, microsoftPrivacy.Length, config.PrivacyUrl);
                 legal.LinkClicked += delegate(object sender, LinkLabelLinkClickedEventArgs e)
                 {
                     string url = e.Link.LinkData as string;
@@ -865,7 +1024,7 @@ namespace SkypeStyleInstaller
                 Location = new Point(696 - buttonWidth, 18),
                 Size = new Size(buttonWidth, 25),
                 FlatStyle = FlatStyle.System,
-                Font = new Font("Tahoma", 9F),
+                Font = new Font("Segoe UI", 9F),
                 UseVisualStyleBackColor = true
             };
             actionButton.Click += click;
@@ -894,7 +1053,7 @@ namespace SkypeStyleInstaller
                 Location = location,
                 AutoSize = true,
                 Cursor = Cursors.Hand,
-                Font = new Font("Tahoma", 9F, FontStyle.Underline, GraphicsUnit.Point),
+                Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point),
                 ForeColor = Color.FromArgb(0, 102, 204),
                 BackColor = Color.Transparent
             };
@@ -916,7 +1075,7 @@ namespace SkypeStyleInstaller
                 AutoSize = false,
                 BackColor = Color.Transparent,
                 ForeColor = color,
-                Font = new Font("Tahoma", fontSize, style, GraphicsUnit.Point),
+                Font = new Font("Segoe UI", fontSize, style, GraphicsUnit.Point),
                 UseCompatibleTextRendering = false
             };
         }
